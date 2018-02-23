@@ -1,14 +1,40 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      PayPal Payment
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+ 
+<!-- <button  ion-button (click)="pay()">
+  <ion-icon   name="cash"></ion-icon>
+  Pay</button> -->
+
+  <form name="paymentForm">
+      <ion-item>
+        <ion-label floating>Amount</ion-label>
+        <ion-input type="text" name="amount" [(ngModel)]="payment.amount"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Currency</ion-label>
+        <ion-select [(ngModel)]="payment.currency" name="currency">
+          <ion-option value="{{currency}}" *ngFor="let currency of currencies">{{currency}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-input type="text" name="description" [(ngModel)]="payment.shortDescription"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Intent</ion-label>
+        <ion-input type="text" name="intent" [(ngModel)]="payment.intent"></ion-input>
+      </ion-item>
+      <p>
+        <button ion-button block color="secondary" (click)="makePayment()">MAKE PAYMENT</button>
+      </p>
+  </form>
+  <p> {{ responsestr }} </p>
+
 </ion-content>
